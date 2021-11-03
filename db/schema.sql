@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS grouFind;
+
+CREATE DATABASE groupFind;

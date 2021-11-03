@@ -1,1 +1,1 @@
-# groupFind
+# just-tech-news
