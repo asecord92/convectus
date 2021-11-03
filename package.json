@@ -19,8 +19,11 @@
   },
   "homepage": "https://github.com/ellysecarter/groupFind#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "date-fns": "^2.25.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jest": "^27.3.1",
     "mysql2": "^2.3.2",
     "sequelize": "^6.9.0"
   }
