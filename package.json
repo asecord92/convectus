@@ -1,28 +1,27 @@
 {
-  "name": "just-tech-news",
+  "name": "conventus",
   "version": "1.0.0",
-  "description": "",
+  "description": "###",
   "main": "server.js",
-  "start": "node server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "main": "server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ellysecarter/just-tech-news.git"
+    "url": "git+https://github.com/ellysecarter/groupFind.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "AdamS, EllyseC, SeanH, Wendyn",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ellysecarter/just-tech-news/issues"
+    "url": "https://github.com/ellysecarter/groupFind/issues"
   },
-  "homepage": "https://github.com/ellysecarter/just-tech-news#readme",
+  "homepage": "https://github.com/ellysecarter/groupFind#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "dotenv": "^10.0.0",
+    "date-fns": "^2.25.0",
     "express": "^4.17.1",
     "mysql2": "^2.3.2",
-    "sequelize": "^6.7.0"
+    "sequelize": "^6.9.0"
   }
 }
