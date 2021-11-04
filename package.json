@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ellysecarter/groupFind.git"
+    "url": "git+https://github.com/asecord92/convectus"
   },
   "keywords": [],
   "author": "AdamS, EllyseC, SeanH, Wendyn",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ellysecarter/groupFind/issues"
+    "url": "https://github.com/asecord92/convectus/issues"
   },
-  "homepage": "https://github.com/ellysecarter/groupFind#readme",
+  "homepage": "https://github.com/asecord92/convectus#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "date-fns": "^2.25.0",
