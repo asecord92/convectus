@@ -12,9 +12,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.engine('handlebars', hbs.engine);
+// Sets Handlebars as the default template engine
+app.engine('handlebars', exphbs({ defaultLayout: 'main' , 
+layoutsDir: __dirname + '/views/layouts/',
+partialsDir: __dirname + '/views/partials/'}));
 app.set('view engine', 'handlebars');
+
 
 // turn on routes
 app.use(routes);
@@ -22,4 +25,27 @@ app.use(routes);
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
+});
+
+// Data
+// =============================================================
+const buttons = [
+  {
+    name: 'my-events',
+    description: 'Events I created'
+  },
+  {
+    name: 'today',
+    description: 'Today'
+  }
+];
+
+// Routes
+// =============================================================
+
+app.get('/', (req, res) => {
+  const data = {
+    filter: buttons
+  };
+  res.render('index', data);
 });

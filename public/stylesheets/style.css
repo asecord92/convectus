@@ -8,38 +8,35 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+main {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #31343c;
+  color: #96c7ca;
+  padding: 0%;
+}
+
 /* <header> style start */
 header {
-  padding: 20px 35px;
+  padding: 20px 55px;
   background-color: #31343c;
-  display: flex;
   justify-content: space-between;
-  /* flex-wrap: wrap; */
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 9999;
 }
 
-/* header a { text-decoration: none; } */
-
-header h1 {
-  font-weight: bold;
-  font-size: 49px;
-  color: #31343c;
-}
-
 header a {
   text-decoration: none;
   background: #31343c;
   color: #96c7ca;
-  padding: 10px;
-  border-bottom: 3px solid #96c7ca;
+  /* padding: 10px; */
+  /* border-bottom: 3px solid #96c7ca; */
 }
 
 header nav {
   float: right;
-  margin: 7px 0;
+  /* margin: 7px 0; */
 }
 
 header nav ul li {
@@ -47,34 +44,32 @@ header nav ul li {
 }
 
 header nav ul li a {
-  padding: 10px 15px;
+  padding: 5px 15px;
   font-weight: lighter;
   font-size: 25px;
   color: #96c7ca;
 }
 
-.name {
-  display: flex;
-  background-color: #96c7ca;
-}
-/*   
-.name a {
-  justify-content: flex-start;
-} */
 .name img {
   border: 3px solid #96c7ca;
   border-radius: 10px;
 }
 
-/* <header> style end */
 
-/* <footer> style start */
+/* <header> style end */
+/* footer */
 footer {
-  background: #48577e;
-  width: 100%;
-  padding: 40px 35px;
+  padding: 10px 35px;
+  font-size: 15px;
+  background-color: black;
   color: #96c7ca;
+  flex-wrap: wrap;
+  font-family: "Helvetica Neue";
+  flex-shrink: 0;
 }
+
+/* footer style end */
+
 
 footer h2 {
   display: inline;
@@ -112,21 +107,37 @@ div {
   background-size: cover;
   display: flex;
   justify-content: flex-end;
+  height: 350px;
   width: 100%;
   align-con
   background-attachment: fixed;
   background-position: 80%;
+
+  flex-direction: column;
 }
 
-.page-subtitle {
+.hero h1{
   display: flex;
   font-size: 40px;
-  color: #31343c;
-  background-color: #96c7ca;
-  height: 70px;
+  color: #96c7ca;
+  background-color: #31343c;
+  height: 50px;
+  justify-content: center;
 }
 
+/* .hero create-btn{
+  position: absolute;
+  right:    0;
+  bottom:   0;;
+
+} */
+
+.hero .btn-holder {
+  justify-content: flex-end;
+  display: flex;
+}
 /* Hero style end */
+
 
 
 

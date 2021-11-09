@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "main": "server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "express-handlebars": "^5.3.4",
     "jest": "^27.3.1",
     "mysql2": "^2.3.2",
+    "nodemon": "^2.0.14",
     "sequelize": "^6.9.0"
   }
 }
