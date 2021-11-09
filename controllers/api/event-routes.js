@@ -2,6 +2,47 @@ const router = require('express').Router();
 // const { regexp } = require('sequelize/types/lib/operators');
 const { Event } = require('../../models');
 
+
+// GET /api/events/week
+router.get('/week', (req, res) => {
+  // Access our Event model and run .findAll() method)
+  var moment = require('moment');
+  moment().format();
+  const { Op } = require('sequelize');
+  Event.findAll({
+    where: {
+      date: {
+      [Op.gte]: moment().subtract(7, 'days').toDate()
+      }
+    }
+    })
+    .then(dbEventData => res.json(dbEventData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// GET /api/events/today
+router.get('/today', (req, res) => {
+  // Access our Event model and run .findAll() method)
+  var moment = require('moment');
+  moment().format();
+  const { Op } = require('sequelize');
+  Event.findAll({
+    where: {
+      date: {
+      [Op.eq]: moment().format(moment.HTML5_FMT.DATE)
+      }
+    }
+    })
+    .then(dbEventData => res.json(dbEventData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // GET /api/events/1
 router.get('/:id', (req, res) => {
   User.findOne({
