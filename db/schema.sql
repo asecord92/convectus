@@ -15,6 +15,7 @@ CREATE TABLE event (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
   description VARCHAR(300) NOT NULL,
+  created_at TIMESTAMP,
   date DATETIME NOT NULL,
   location VARCHAR(30) NOT NULL,
   creator_id INTEGER,
