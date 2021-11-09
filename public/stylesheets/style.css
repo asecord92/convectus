@@ -109,8 +109,7 @@ div {
   justify-content: flex-end;
   height: 350px;
   width: 100%;
-  align-con
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   background-position: 80%;
 
   flex-direction: column;

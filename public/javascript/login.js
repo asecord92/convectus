@@ -5,8 +5,8 @@
 async function loginHandler(e){
     e.preventDefault();
 
-    const email
-    const password
+    const email = document.querySelector('#email-login').value.trim();
+    const password= document.querySelector('#password-login').value.trim();
     
 
     if (email && password) {
@@ -18,9 +18,11 @@ async function loginHandler(e){
             }),
             headers: {'Content-Type' : 'application/json'}
         });
+        console.log(response);
         if(response.ok){
+            console.log('success')
             // /dashboard is a place holder until template is build out
-            document.location.replace('/dashboard');
+            document.location.replace('/');
         } else {
             alert(response.statusText);
         }
@@ -28,3 +30,5 @@ async function loginHandler(e){
 }
 
 // TODO: add selector for login form add event listener to implemenent function
+
+document.querySelector('.login-form').addEventListener('submit', loginHandler);
