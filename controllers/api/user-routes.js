@@ -38,7 +38,10 @@ router.post('/', (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name
+
   })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -90,4 +93,31 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.post('/login', (req,res)=>{
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  })
+  .then(dbUserData => {
+    if(!dbUserData){
+      res.status(400).json({message: 'No user with that email address!'});
+      return;
+    }
+    const validPassword = dbUserData.checkPassword(req.body.password);
+
+    if(!validPassword) {
+      res.status(400).json({message: 'Invalid Password'});
+      return;
+    }
+
+    //TODO: add session logic
+
+  })
+})
+router.post('/logout', (req,res) => {
+
+  //TODO: finish when session logic is done
+  
+})
 module.exports = router;
