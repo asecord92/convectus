@@ -121,9 +121,40 @@ router.post('/login', (req,res)=>{
     });
   });
 });
+
+router.post('/signup', (req,res) => {
+  User.create({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name
+  })
+  .then(dbUserData => {
+    req.session.save(()=> {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+
+      res.json(dbUserData);
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
 router.post('/logout', (req,res) => {
 
-  //TODO: finish when session logic is done
+  if(req.session.loggedIn) {
+    req.session.destroy(()=>{
+      res.status(204).end();
+    });
+
+  }
+  else {
+    res.status(404).end();
+  }
   
 })
 module.exports = router;

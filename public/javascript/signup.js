@@ -5,11 +5,11 @@
 async function signupHandler(e){
     e.preventDefault();
 
-    const username 
-    const email
-    const password
-    const first_name
-    const last_name
+    const username = document.querySelector('#username-signup').value.trim();
+    const email = document.querySelector('#email-signup').value.trim();
+    const password = document.querySelector('#password-signup').value.trim();
+    const first_name = document.querySelector('#first_name-signup').value.trim();
+    const last_name = document.querySelector('#last_name-signup').value.trim();
 
     if(username && email && password && first_name && last_name) {
         const response = await fetch('/api/users', {
@@ -25,6 +25,7 @@ async function signupHandler(e){
         });
         if(response.ok){
             console.log('success');
+            document.location.replace('/');
 
         }else {
             alert(response.statusText);
@@ -33,3 +34,5 @@ async function signupHandler(e){
 };
 
 // TODO: add selector for signup form add event listener to implemenent function
+
+document.querySelector('.signup-form').addEventListener('submit', signupHandler);
