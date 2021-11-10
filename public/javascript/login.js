@@ -18,11 +18,10 @@ async function loginHandler(e){
             }),
             headers: {'Content-Type' : 'application/json'}
         });
-        console.log(response);
         if(response.ok){
             console.log('success')
             // /dashboard is a place holder until template is build out
-            document.location.replace('/');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }

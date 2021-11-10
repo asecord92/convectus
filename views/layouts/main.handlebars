@@ -20,14 +20,18 @@
     <nav>
      
     <ul>
-
+      {{#if loggedIn}}
         <li>
-        <a href="/login">Login</a>
+          <a href="/dashboard">Dashboard</a>
         </li>
-
         <li>
           <button id="logout" class="btn-no-style">logout</button>
         </li>
+        {{else}}
+        <li>
+        <a href="/login">Login</a>
+        </li>
+    {{/if}}
 
     </ul>
     
@@ -35,9 +39,7 @@
   </header>
    <!-- hero/jumbotron -->
   <section class="hero">
-      <div class="button-holder">
-      <button type="submit" class="create-btn">Create Event</button>
-      </div>
+
   </section>
   <main>
 	{{{ body }}}
