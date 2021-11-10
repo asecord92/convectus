@@ -6,13 +6,16 @@ const { Event } = require('../../models');
 // GET /api/events/week
 router.get('/week', (req, res) => {
   // Access our Event model and run .findAll() method)
-  var moment = require('moment');
-  moment().format();
+  
+  const {fns,addDays, subDays} = require('date-fns');
+  const startDate = new Date();
+  const endDate = addDays(startDate, 7);
   const { Op } = require('sequelize');
+
   Event.findAll({
     where: {
       date: {
-      [Op.gte]: moment().subtract(7, 'days').toDate()
+        [Op.between]: [startDate, endDate]
       }
     }
     })
@@ -26,13 +29,41 @@ router.get('/week', (req, res) => {
 // GET /api/events/today
 router.get('/today', (req, res) => {
   // Access our Event model and run .findAll() method)
-  var moment = require('moment');
-  moment().format();
+  
+  const { startOfDay, endOfDay } = require('date-fns');
+  const today = new Date();
   const { Op } = require('sequelize');
+  const startdate = startOfDay(today);
+  const enddate = endOfDay(today);
+  console.log(`${startdate}
+   ${enddate} -----------`);
   Event.findAll({
     where: {
       date: {
-      [Op.eq]: moment().format(moment.HTML5_FMT.DATE)
+        [Op.between]: [startOfDay(today), endOfDay(today)]
+      }
+    }
+    })
+    .then(dbEventData => res.json(dbEventData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// GET /api/events/new
+router.get('/new', (req, res) => {
+  // Access our Event model and run .findAll() method)
+  
+  const {fns,subDays} = require('date-fns');
+  const endDate = new Date();
+  const startDate = subDays(endDate, 3);
+  const { Op } = require('sequelize');
+
+  Event.findAll({
+    where: {
+      created_at: {
+        [Op.between]: [startDate, endDate]
       }
     }
     })

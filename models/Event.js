@@ -35,6 +35,11 @@ Event.init(
           model: 'user',
           key: 'id'
         }
+      },
+      created_at: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+        // defaultValue: TIMESTAMP
       }
     },
     {

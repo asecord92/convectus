@@ -21,7 +21,7 @@ Rsvp.init(
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: false
-      },
+      }
     },
     {
       hooks: {

@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "seeds": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "moment": "^2.29.1",
     "mysql2": "^2.3.2",
     "nodemon": "^2.0.15",
-    "sequelize": "^6.9.0"
+    "sequelize": "^6.9.0",
+    "sequelize-mysql-timestamp": "^1.4.0"
   }
 }
