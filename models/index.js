@@ -11,6 +11,12 @@ Rsvp.belongsTo(User, {
 foreignKey: 'user_id'
 });
 
+User.belongsToMany(Rsvp, {
+    through: Rsvp,
+    foreignKey: 'user_id'
+  });
+
+
 User.hasMany(Event, {
     foreignKey: 'creator_id'
   });
@@ -20,9 +26,14 @@ Event.belongsTo(User, {
 foreignKey: 'creator_id'
 });
 
+User.belongsToMany(Event, {
+    through: Event,
+    foreignKey: 'creator_id'
+  });
+
 
 Event.belongsTo(Rsvp, {
-    foreignKey: 'event_id'
+    foreignKey: 'creator_id'
     });
 
 

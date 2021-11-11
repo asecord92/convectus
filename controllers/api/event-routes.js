@@ -88,13 +88,13 @@ router.get('/:id', (req, res) => {
       'date',
       'location',
       'creator_id',
-      'created_at',
-      [sequelize.literal('(SELECT * FROM user WHERE event.id = user.id)'), 'owner']
+      'created_at'//,
+      // [sequelize.literal('(SELECT * FROM user WHERE event.id = user.id)'), 'owner']
     ],
     include: [
       {
         model: Rsvp,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'user_id', 'event_id'],
         include: {
           model: User,
           attributes: ['username']
