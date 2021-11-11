@@ -2,6 +2,7 @@
 
 async function createNewEvent(e) {
     e.preventDefault();
+    console.log('click')
 
     const name = document.querySelector('#event-name').value.trim();
     const description = document.querySelector('#event-description').value.trim();
@@ -20,6 +21,7 @@ async function createNewEvent(e) {
             'Content-Type' : 'application/json'
         }
     });
+    console.log(response);
     if(response.ok) {
         document.location.replace('/dashboard');
     } else {

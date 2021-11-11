@@ -1,14 +1,13 @@
 {{#if events.length}}
 <section>
-  <h2>All Posts</h2>
-  <ol>
+  <h2>All Events</h2>
+
     {{#each events as |event|}}
-    <li>
-      {{> events-info event}}
-      <a href="/api/events/{{events.id}}" class="view-link">View event</a>
-    </li>
+    {{> events-info event}}
+      
+    
     {{/each}}
-  </ol>
+ 
 </section>
 {{/if}}
 

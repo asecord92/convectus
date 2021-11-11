@@ -3,11 +3,12 @@
 async function editEvent(e) {
     e.preventDefault();
 
-    const name
-    const description
-    const date
-    const location
-    const id
+    const name = document.getElementById('name').value;
+    const description = document.getElementById('description').value;
+    const date = document.getElementById('date').value;
+    const location = document.getElementById('location').value;
+    const creator_id = req.session.user_id;
+    const id = window.location.toString().split('events/')[1];
 
     const response = await fetch(`/api/events/${id}`, {
         method: 'put',
@@ -29,4 +30,22 @@ async function editEvent(e) {
     }
 }
 
+async function deleteEvent(e) {
+    e.preventDefault();
+
+    const id = window.location.toString().split('events/')[1];
+
+    const response = await fetch(`/api/events/${id}`, {
+        method: 'delete'
+    });
+
+    if(response.ok) {
+        document.location.replace('/dashboard/');
+    } else {
+        alert(response.statusText);
+    }
+}
+
 // TODO: add selector for edit form add event listener to implemenent function
+document.querySelector('#edit-event-btn').addEventListener('click', editEvent);
+document.querySelector('#delete-event-btn').addEventListener('click', deleteEvent);
