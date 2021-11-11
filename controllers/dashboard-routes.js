@@ -7,3 +7,12 @@ router.get('/', (req,res) => {
 
 
 module.exports = router;
+
+// route for get all events
+
+
+//route for create event
+
+
+
+module.exports = router;

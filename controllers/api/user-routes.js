@@ -100,6 +100,7 @@ router.post('/login', (req,res)=>{
     }
   })
   .then(dbUserData => {
+    console.log(dbUserData + "userdata")
     if(!dbUserData){
       res.status(400).json({message: 'No user with that email address!'});
       return;
@@ -131,12 +132,15 @@ router.post('/signup', (req,res) => {
     last_name: req.body.last_name
   })
   .then(dbUserData => {
+    console.log('====================')
+    console.log("Outside SESSION" + dbUserData)
     req.session.save(()=> {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-
+      console.log("SESSION" + req.session)
       res.json(dbUserData);
+
     });
   })
   .catch(err => {

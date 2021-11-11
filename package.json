@@ -32,12 +32,7 @@
     "moment": "^2.29.1",
     "mysql2": "^2.3.2",
     "nodemon": "^2.0.15",
-<<<<<<< HEAD
     "path": "^0.12.7",
     "sequelize": "^6.9.0"
-=======
-    "sequelize": "^6.9.0",
-    "sequelize-mysql-timestamp": "^1.4.0"
->>>>>>> 5e5b7b78d843d60e10ed5da2ae4467b9180b1f33
   }
 }
