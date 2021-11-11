@@ -28,7 +28,9 @@
 
 
 ## Features
-Go to 
+* Go to [insert web link here] and click "Login". 
+* After that you will be asked to login or sign up. Your password is protected as you're typing it in.
+* You can create events, search for an event by name, see events that you are hosting and attending, and search by today or this week.
 
 ## Known Bugs
 
