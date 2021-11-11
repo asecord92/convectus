@@ -1,6 +1,6 @@
 const router = require('express').Router();
-// const { regexp } = require('sequelize/types/lib/operators');
 const { Event } = require('../../models');
+const { Op } = require('sequelize');
 
 
 // GET /api/events/week
@@ -10,7 +10,6 @@ router.get('/week', (req, res) => {
   const {fns,addDays, subDays} = require('date-fns');
   const startDate = new Date();
   const endDate = addDays(startDate, 7);
-  const { Op } = require('sequelize');
 
   Event.findAll({
     where: {
@@ -74,16 +73,17 @@ router.get('/new', (req, res) => {
     });
 });
 
+
 // GET /api/events/1
 router.get('/:id', (req, res) => {
-  User.findOne({
+  Event.findOne({
     where: {
       id: req.params.id
     }
   })
     .then(dbEventData => {
       if (!dbEventData) {
-        res.status(404).json({ message: 'No user found with this id' });
+        res.status(404).json({ message: 'No event found with this id' });
         return;
       }
       res.json(dbEventData);
@@ -135,7 +135,7 @@ router.put('/:id', (req, res) => {
   })
     .then(dbEventData => {
       if (!dbEventData[0]) {
-        res.status(404).json({ message: 'No user found with this id' });
+        res.status(404).json({ message: 'No event found with this id' });
         return;
       }
       res.json(dbEventData);

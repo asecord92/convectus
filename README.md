@@ -1,7 +1,7 @@
-# Convectus
+# ConnectUs
 ![GitHub license](https://img.shields.io/badge/license-MIT-ff69b4.svg)
 
-### This app is a group to meet people, make friends, find support, and explore your interests. Thousands of events are happening every day, both online and in person!
+### This app is a way to connect you people, make friends, find support, and explore your interests. Thousands of events are happening every day, both online and in person!
 
 ![screenshot](assets/images/screenshot.png)
 
