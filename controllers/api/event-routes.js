@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Event } = require('../../models');
+const sequelize = require('../../config/connection');
+const { Event, User, Rsvp } = require('../../models');
 const { Op } = require('sequelize');
 
 
@@ -79,7 +80,31 @@ router.get('/:id', (req, res) => {
   Event.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    attributes: [
+      'id',
+      'name',
+      'description',
+      'date',
+      'location',
+      'creator_id',
+      'created_at',
+      [sequelize.literal('(SELECT * FROM user WHERE event.id = user.id)'), 'owner']
+    ],
+    include: [
+      {
+        model: Rsvp,
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then(dbEventData => {
       if (!dbEventData) {

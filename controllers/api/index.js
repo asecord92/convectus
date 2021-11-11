@@ -8,6 +8,6 @@ const rsvpRoutes = require('./rsvp-routes');
 router.use('/users', userRoutes);
 router.use('/events', eventRoutes);
 router.use('/eventname', eventnameRoutes);
-router.use('/rsvps', rsvpRoutes);
+router.use('/rsvp', rsvpRoutes);
 
 module.exports = router;
