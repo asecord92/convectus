@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const sequelize = require('../../config/connection');
+const { User, Event, Rsvp } = require('../../models');
 
 // GET /api/users/1
 router.get('/:id', (req, res) => {
@@ -21,10 +22,11 @@ router.get('/:id', (req, res) => {
     });
 });
 
+
 // GET /api/users
 router.get('/', (req, res) => {
     // Access our User model and run .findAll() method)
-    User.findAll()
+    User.findAll({ include: Event })
       .then(dbUserData => res.json(dbUserData))
       .catch(err => {
         console.log(err);

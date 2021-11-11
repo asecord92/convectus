@@ -34,5 +34,4 @@ Rsvp.init(
     }
   );
 
-  
 module.exports = Rsvp;
