@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConnectUs</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+</head>
+
+<body >
+  <header>
+    <h1 class="name">
+        <a href="/" style="text-decoration: none">
+            ConnectUs
+        </a>
+    </h1>
+    <nav>
+     
+    <ul>
+      {{#if loggedIn}}
+        <li>
+          <a href="/dashboard">Dashboard</a>
+        </li>
+        <li>
+          <button id="logout" class="btn-no-style">logout</button>
+        </li>
+        {{else}}
+        <li>
+        <a href="/login">Login</a>
+        </li>
+    {{/if}}
+
+    </ul>
+    
+    </nav>
+  </header>
+   <!-- hero/jumbotron -->
+  <section class="hero">
+
+  </section>
+  <main>
+	{{{ body }}}
+  </main>
+  <footer>
+        © 2021 ConnectUs
+  </footer>
+  <script src="/javascript/logout.js"></script>
+</body>
+
+</html>
