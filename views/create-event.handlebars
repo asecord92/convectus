@@ -1,4 +1,4 @@
-<form class = 'create-form'>
+{{!-- <form class = 'create-form'>
     <div>
         <label for='event-name'>Name of Event:</label>
         <input type="text" id="event-name"
@@ -18,5 +18,28 @@
     <div>
         <button type="submit">Create</button>
     </div>
-</form>
+</form> --}}
+
+
+<div class="col-3 justify-content-md-center">
+<form class = 'signup-form'>
+    <div class="mb-6">
+        <label for="event-name" class="form-label">Name of Event</label>
+        <input type="email" class="form-control" id="event-name" >
+    </div>
+    <div class="mb-6">
+        <label for="event-description" class="form-label">Describe Your Event</label>
+        <input type="text" class="form-control" id="event-description" >
+    </div>
+    <div class="mb-6">
+        <label for="event-date" class="form-label">Day of Event</label>
+        <input type="date" class="form-control" id="event-date">
+    </div>
+    <div class="mb-6">
+        <label for="event-location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="event-location">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    </div>
 <script src="/javascript/create-event.js"></script>
