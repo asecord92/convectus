@@ -114,7 +114,7 @@ router.post('/', (req, res) => {
     date: req.body.date,
     location: req.body.location,
     //might need to use session id here?
-    creator_id: req.body.creator_id
+    creator_id: req.session.user_id
   })
     .then(dbEventData => res.json(dbEventData))
     .catch(err => {

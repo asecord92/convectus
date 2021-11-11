@@ -132,13 +132,10 @@ router.post('/signup', (req,res) => {
     last_name: req.body.last_name
   })
   .then(dbUserData => {
-    console.log('====================')
-    console.log("Outside SESSION" + dbUserData)
     req.session.save(()=> {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-      console.log("SESSION" + req.session)
       res.json(dbUserData);
 
     });
