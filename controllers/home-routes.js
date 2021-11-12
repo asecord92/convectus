@@ -5,7 +5,11 @@ const {Event, User, Rsvp } = require('../models');
 //render events
 
 router.get('/', (req, res) => {
-    res.render('homepage');
+    var loggedIn = req.session.user_id !== undefined
+    var data = {
+        loggedIn: loggedIn,
+    }
+    res.render('homepage', data);
   });
 
   router.get('/login', (req, res) => {
