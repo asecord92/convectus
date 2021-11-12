@@ -1,0 +1,14 @@
+{{#if events.length}}
+<section>
+  <h2>All Events</h2>
+
+    {{#each events as |event|}}
+    {{> events-info event}}
+      
+    
+    {{/each}}
+ 
+</section>
+{{/if}}
+
+<script src="/javascript/add-post.js"></script>
