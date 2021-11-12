@@ -1,5 +1,5 @@
 const User = require("../models/User.js");
-const Employee = require("../models/user.js");
+
 
 test('Creates a user object', () =>{
     const myUser = new User('Hugo', 'Williams', 'hugo123', 'hugo@mail.com', 'jshagdf23*&*');
