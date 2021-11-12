@@ -12,13 +12,20 @@
 
 <body >
   <header>
+    {{#if loggedIn}}
     <h1 class="name">
-        <a href="/" style="text-decoration: none">
+        <a href="/dashboard" style="text-decoration: none">
             ConnectUs
         </a>
     </h1>
-    <nav>
-     
+    {{else}}
+       <h1 class="name">
+        <a href="/" style="text-decoration: none">
+            ConnectUs
+        </a>
+        </h1>
+        {{/if}}
+    <nav >
     <ul>
       {{#if loggedIn}}
         <li>
