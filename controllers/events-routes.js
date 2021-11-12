@@ -92,6 +92,7 @@ router.get('/today', (req, res) => {
     const now = new Date();
     const startDate = startOfDay(now);
     const endDate = endOfDay(now);
+    console.log(`start ${startDate}    end ${endDate}`);
 
     Event.findAll({
         where: {
@@ -102,7 +103,7 @@ router.get('/today', (req, res) => {
     })
         .then(dbEventData => {
             var data = {
-                title: 'Hosting events',
+                title: "Today's events",
                 events: [],
             };
             data.events = dbEventData.map(event => {
@@ -113,7 +114,7 @@ router.get('/today', (req, res) => {
                 }
                 return currentEvent;
             });
-            res.render('allevents', data);
+            res.render('today', data);
         })
         .catch(err => {
             res.status(500).json(err);
