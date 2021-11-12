@@ -13,10 +13,12 @@ router.get('/all', (req, res) => {
                 events: [],
             };
             data.events = dbEventData.map(event => {
+                const newDate = new Date(event.dataValues.date)
+                const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
-                    date: event.dataValues.date,
+                    date: formatedDate,
                 }
                 return currentEvent;
             });
@@ -39,10 +41,12 @@ router.get('/hosting', (req, res) => {
                 events: [],
             };
             data.events = dbEventData.map(event => {
+                const newDate = new Date(event.dataValues.date)
+                const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
-                    date: event.dataValues.date,
+                    date: formatedDate,
                 }
                 return currentEvent;
             });
