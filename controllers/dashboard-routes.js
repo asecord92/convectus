@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
+const withAuth = require('../utils/auth')
 
-router.get('/', (req,res) => {
+router.get('/', withAuth, (req,res) => {
     res.render('dashboard', {loggedIn: true })
   });
 
@@ -10,7 +11,7 @@ router.get('/', (req,res) => {
 
 //route for create event
 
-router.get('/create_event', (req,res)=> {
+router.get('/create_event', withAuth, (req,res)=> {
   res.render('create-event', {loggedIn: true});
 });
 

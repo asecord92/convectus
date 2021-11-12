@@ -1,6 +1,7 @@
 const router = require('express').Router();
 // const { regexp } = require('sequelize/types/lib/operators');
 const { Rsvp } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET /api/rsvp/1
 router.get('/:id', (req, res) => {
@@ -34,7 +35,7 @@ router.get('/', (req, res) => {
   });
   
   // POST /api/rsvps
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   // expects {user_id: 1, event_id: 2}
 
   Rsvp.create({
@@ -49,11 +50,11 @@ router.post('/', (req, res) => {
 });
 
 // PUT /api/rsvps/1
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
 });
 
 // DELETE /api/rsvps/1
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Rsvp.destroy({
     where: {
       id: req.params.id

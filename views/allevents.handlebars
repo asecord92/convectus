@@ -1,13 +1,13 @@
 {{#if events.length}}
-<section>
+<section >
   <h2>All Events</h2>
-
+    <div class="d-flex space-between">
     {{#each events as |event|}}
     {{> events-info event}}
       
     
     {{/each}}
- 
+    </div>
 </section>
 {{/if}}
 
