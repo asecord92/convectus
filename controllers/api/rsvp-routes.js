@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// GET /api/rsvps
+// GET /api/rsvp
 router.get('/', (req, res) => {
     // Access our Rsvp model and run .findAll() method)
     Rsvp.findAll()
@@ -34,12 +34,12 @@ router.get('/', (req, res) => {
       });
   });
   
-  // POST /api/rsvps
+// POST /api/rsvp
 router.post('/', withAuth, (req, res) => {
   // expects {user_id: 1, event_id: 2}
 
   Rsvp.create({
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
     event_id: req.body.event_id
   })
     .then(dbRsvpData => res.json(dbRsvpData))
@@ -49,15 +49,17 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-// PUT /api/rsvps/1
+// PUT /api/rsvp/1
 router.put('/:id', withAuth, (req, res) => {
 });
 
-// DELETE /api/rsvps/1
-router.delete('/:id', withAuth, (req, res) => {
-    Rsvp.destroy({
+// DELETE /api/rsvp/1
+router.delete('/:id', (req, res) => {
+  console.log(req.session.user_id);
+  Rsvp.destroy({
     where: {
-      id: req.params.id
+      user_id: req.session.user_id,
+      event_id: req.params.id,
     }
   })
     .then(dbRsvpData => {

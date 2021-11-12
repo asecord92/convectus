@@ -69,7 +69,6 @@ router.get('/attending', (req, res) => {
                 }
             })
                 .then(dbEventData => {
-                    console.log("help");
                     var data = {
                         loggedIn: req.session.user_id !== undefined,
                         title: 'Hosting events',

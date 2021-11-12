@@ -38,14 +38,14 @@ async function editEvent(e) {
 async function deleteEvent(e) {
     e.preventDefault();
 
-    const id = window.location.toString().split('events/')[1];
+    const id = window.location.toString().split('event/')[1];
 
     const response = await fetch(`/api/events/${id}`, {
         method: 'delete'
     });
 
     if(response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/dashboard');
     } else {
         alert(response.statusText);
     }
