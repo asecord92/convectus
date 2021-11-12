@@ -7,19 +7,7 @@ router.get('/:id', (req, res) => {
   User.findOne({
     where: {
       id: req.params.id
-    },
-    include: [
-      {
-        model: Event,
-        attributes: ['id', 'name', 'description', 'location', 'date']
-      },
-      {
-        model: RSVP,
-        attributes: ['event_id'],
-        through: Event,
-        as: 'rsvp_event'
-      }
-    ]
+    }
   })
     .then(dbUserData => {
       if (!dbUserData) {

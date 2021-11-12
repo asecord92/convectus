@@ -9,6 +9,7 @@ router.get('/all', (req, res) => {
     Event.findAll()
         .then(dbEventData => {
             var data = {
+                loggedIn: req.session.user_id !== undefined,
                 title: 'All events',
                 events: [],
             };
@@ -37,6 +38,7 @@ router.get('/hosting', (req, res) => {
     })
         .then(dbEventData => {
             var data = {
+                loggedIn: req.session.user_id !== undefined,
                 title: 'Hosting events',
                 events: [],
             };
@@ -71,8 +73,8 @@ router.get('/attending', (req, res) => {
                 }
             })
                 .then(dbEventData => {
-                    console.log("help");
                     var data = {
+                        loggedIn: req.session.user_id !== undefined,
                         title: 'Hosting events',
                         events: [],
                     };
@@ -96,6 +98,7 @@ router.get('/today', (req, res) => {
     const now = new Date();
     const startDate = startOfDay(now);
     const endDate = endOfDay(now);
+    console.log(`start ${startDate}    end ${endDate}`);
 
     Event.findAll({
         where: {
@@ -106,7 +109,8 @@ router.get('/today', (req, res) => {
     })
         .then(dbEventData => {
             var data = {
-                title: 'Hosting events',
+                loggedIn: req.session.user_id !== undefined,
+                title: "Today's events",
                 events: [],
             };
             data.events = dbEventData.map(event => {
@@ -117,7 +121,7 @@ router.get('/today', (req, res) => {
                 }
                 return currentEvent;
             });
-            res.render('allevents', data);
+            res.render('today', data);
         })
         .catch(err => {
             res.status(500).json(err);
@@ -137,7 +141,8 @@ router.get('/thisweek', (req, res) => {
         }
     })
         .then(dbEventData => {
-            const data = {
+            var data = {
+                loggedIn: req.session.user_id !== undefined,
                 title:"This week's events",
                 events: [],
             }
@@ -169,7 +174,8 @@ router.get('/new', (req, res) => {
         }
     })
         .then(dbEventData => {
-            const data = {
+            var data = {
+                loggedIn: req.session.user_id !== undefined,
                 title:"New events",
                 events: [],
             }
@@ -228,9 +234,9 @@ router.get('/event/:id', (req, res) => {
         .then(dbCreatorData => {
             res.locals.creator = dbCreatorData.dataValues;
 
-            const isCreator = (res.locals.event.creator_id === req.session.user_id);
             const data = {
-                isCreator: isCreator,
+                loggedIn: req.session.user_id !== undefined,
+                isCreator: res.locals.event.creator_id === req.session.user_id,
                 isAttending: res.locals.rsvps.includes(req.session.username),
                 creator: res.locals.creator.username,
                 name: res.locals.event.name,

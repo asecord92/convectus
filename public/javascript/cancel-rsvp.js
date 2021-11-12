@@ -1,12 +1,10 @@
-async function rsvp(e) {
+async function deleteRsvp(e) {
     e.preventDefault();
+
     const id = window.location.toString().split('event/')[1];
 
-    const response = await fetch(`/api/rsvp`, {
-        method: 'POST',
-        body: JSON.stringify({
-            event_id: id,
-        }),
+    const response = await fetch(`/api/rsvp/${id}`, {
+        method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -15,8 +13,8 @@ async function rsvp(e) {
     if (response.ok) {
         window.location.href = `/events/event/${id}`;
     } else {
-        alert('RSVP failed');
+        alert('RSVP cancel failed');
     }
 }
 
-document.querySelector('#rsvp-button').addEventListener('click', rsvp);
+document.querySelector('#cancel-rsvp-button').addEventListener('click', deleteRsvp);

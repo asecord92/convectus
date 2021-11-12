@@ -7,8 +7,13 @@ async function editEvent(e) {
     const description = document.getElementById('description').value;
     const date = document.getElementById('date').value;
     const location = document.getElementById('location').value;
-    const creator_id = req.session.user_id;
-    const id = window.location.toString().split('events/')[1];
+    const id = window.location.toString().split('event/')[1];
+
+    console.log(name);
+    console.log(description);
+    console.log(date);
+    console.log(location);
+    console.log(id);
 
     const response = await fetch(`/api/events/${id}`, {
         method: 'put',
@@ -24,7 +29,7 @@ async function editEvent(e) {
     });
 
     if(response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/dashboard');
     } else {
         alert(response.statusText);
     }
@@ -33,14 +38,14 @@ async function editEvent(e) {
 async function deleteEvent(e) {
     e.preventDefault();
 
-    const id = window.location.toString().split('events/')[1];
+    const id = window.location.toString().split('event/')[1];
 
     const response = await fetch(`/api/events/${id}`, {
         method: 'delete'
     });
 
     if(response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/dashboard');
     } else {
         alert(response.statusText);
     }
