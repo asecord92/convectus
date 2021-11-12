@@ -20,7 +20,7 @@ router.get('/all', (req, res) => {
                 }
                 return currentEvent;
             });
-            res.render('allevents', {data, loggedIn: true});
+            res.render('allevents', data);
         })
         .catch(err => {
             res.status(500).json(err);
@@ -46,7 +46,7 @@ router.get('/hosting', (req, res) => {
                 }
                 return currentEvent;
             });
-            res.render('allevents', {data, loggedIn: true});
+            res.render('allevents', data);
         })
         .catch(err => {
             res.status(500).json(err);
@@ -80,7 +80,7 @@ router.get('/attending', (req, res) => {
                         }
                         return currentEvent;
                     });
-                    res.render('allevents', {data, loggedIn: true});
+                    res.render('allevents', data );
                 })
             })
         .catch(err => {
@@ -92,6 +92,7 @@ router.get('/today', (req, res) => {
     const now = new Date();
     const startDate = startOfDay(now);
     const endDate = endOfDay(now);
+    console.log(`start ${startDate}    end ${endDate}`);
 
     Event.findAll({
         where: {
@@ -102,7 +103,7 @@ router.get('/today', (req, res) => {
     })
         .then(dbEventData => {
             var data = {
-                title: 'Hosting events',
+                title: "Today's events",
                 events: [],
             };
             data.events = dbEventData.map(event => {
@@ -113,7 +114,7 @@ router.get('/today', (req, res) => {
                 }
                 return currentEvent;
             });
-            res.render('allevents', {data, loggedIn: true});
+            res.render('today', data);
         })
         .catch(err => {
             res.status(500).json(err);
@@ -145,7 +146,7 @@ router.get('/thisweek', (req, res) => {
                 }
                 return currentEvent;
             });
-            res.render('allevents', {data, loggedIn: true});
+            res.render('allevents', data);
         })
         .catch(err => {
             res.status(500).json(err);
@@ -177,7 +178,7 @@ router.get('/new', (req, res) => {
                 }
                 return currentEvent;
             })
-            res.render('allevents', {data, loggedIn: true});
+            res.render('allevents', data);
         })
         .catch(err => {
             res.status(500).json(err);
@@ -236,7 +237,7 @@ router.get('/event/:id', (req, res) => {
                 create_date: res.locals.event.created_at,
                 rsvps: res.locals.rsvps,
             };
-            res.render('single-event', {data, loggedIn: true});
+            res.render('single-event', data);
         })
     })
     .catch(err => {

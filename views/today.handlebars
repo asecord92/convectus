@@ -1,6 +1,6 @@
 {{#if events.length}}
 <section >
-  <h2>All Events</h2>
+  <h2>Today's Events</h2>
     <div class="d-flex space-between">
     {{#each events as |event|}}
     {{> events-info event}}
@@ -10,5 +10,3 @@
     </div>
 </section>
 {{/if}}
-
-<script src="/javascript/add-post.js"></script>

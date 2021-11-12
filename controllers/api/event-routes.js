@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Event, User, Rsvp } = require('../../models');
 const { Op } = require('sequelize');
+const withAuth = require('../../utils/auth');
 
 
 // GET /api/events/week
@@ -126,7 +127,7 @@ router.get('/', (req, res) => {
   });
   
   // POST /api/events
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   // expects {name: 'Knitting meetup', description: 'Meetup with knitters for holiday crafting', date: '2008-11-11 13:23:44', location: "123 main st., small town ...", creator_id: 2}
   Event.create({
     name: req.body.name,
@@ -144,7 +145,7 @@ router.post('/', (req, res) => {
 });
 
 // PUT /api/events/1
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
   // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
@@ -167,7 +168,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /api/events/1
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Event.destroy({
     where: {
       id: req.params.id

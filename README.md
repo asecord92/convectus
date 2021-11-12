@@ -12,7 +12,7 @@
 * [Technologies used](#technologies-used)
 * [Features](#features)
 * [Known bugs](#known-bugs)
-* [Images](#stock-images-provided-by)
+* [Images](#stock-image-provided-by)
 * [License](#license)
 * [Contributors](#contributors)
 * [Questions](#questions)
@@ -30,13 +30,13 @@
 ## Features
 * Go to [insert web link here] and click "Login". 
 * After that you will be asked to login or sign up. Your password is protected as you're typing it in.
-* You can create events, search for an event by name, see events that you are hosting and attending, and search by today or this week.
+* You can create events, search for an event by name, see events that you are hosting and attending, and search by today or this week. 
 
 ## Known Bugs
+None found.
 
 
-
-## Stock images provided by:
+## Stock image provided by:
 * [Kristjan Kotar](https://unsplash.com/photos/-h15p84GY5k)
 
 
