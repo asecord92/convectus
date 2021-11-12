@@ -2,10 +2,8 @@ const Rsvp = require('../models/Rsvp.js')
 
 
 test('RSVP', () =>{
-    const rsvp = new Rsvp('Hugo', 'Williams', 'hugo123', 'hugo@mail.com', 'jshagdf23*&*');
+    const myRsvp = new Rsvp('hugo123','myevent');
     
-    expect(myUser.first_name).toMatch('Hugo');
-    expect(myUser.last_name).toMatch('Williams');
-    expect(myUser.id).toBeGreaterThan(0);
-    expect(myUser.email).toMatch('hugo@mail.com');
+    expect(myRsvp.user_id).toBeGreaterThan(0);
+    expect(myRsvp.event_id).toBeGreaterThan(0);
 });
