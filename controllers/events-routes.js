@@ -233,14 +233,15 @@ router.get('/event/:id', (req, res) => {
         User.findByPk(res.locals.event.creator_id)
         .then(dbCreatorData => {
             res.locals.creator = dbCreatorData.dataValues;
-
+            const newDate = new Date(res.locals.event.date);
+            const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
             const data = {
                 loggedIn: req.session.user_id !== undefined,
                 isCreator: res.locals.event.creator_id === req.session.user_id,
                 isAttending: res.locals.rsvps.includes(req.session.username),
                 creator: res.locals.creator.username,
                 name: res.locals.event.name,
-                date: res.locals.event.date,
+                date: formatedDate,
                 description: res.locals.event.description,
                 location: res.locals.event.location,
                 create_date: res.locals.event.created_at,
