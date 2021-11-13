@@ -1,57 +1,16 @@
 <class="container">
     <div class="column">
         {{#unless isCreator}}
-        <div class="row">
-            <h1 id="name">{{ name }}</h1>
-            <h2 id="date">{{ date }}</h2>
-        </div>
-        <div class="row">
-            <div id="creator">Created by: {{ creator }}</div>
-            <br>
-            <div id="description"> {{ description }}</div>
-            <br>
-            <div id="location">Location: {{ location }}</div>
-            <br>
-        </div>
-        <div class="row">
-            Attendees:
-            <br>
-            {{#each rsvps}}
-            {{ this }}
-            <br>
-            {{/each}}
-        </div>
-        {{/unless}}
-
-        {{#if loggedIn}}
-            {{#if isAttending}}
-                <div class="row">
-                    <div id="attending">You are attending this event!</div>
-                </div>
-                <div class="row">
-                    <button id="cancel-rsvp-button">Cancel RSVP</button>
-                </div>
-            {{/if}}
-            {{#unless isAttending}}
-                <div class="row">
-                    <div id="not-attending">You are not attending this event!</div>
-                </div>
-                <div class="row">
-                    <button id="rsvp-button">RSVP</button>
-                </div>
-            {{/unless}}
-
-            {{#if isCreator}}
             <div class="row">
-                <input id="name">{{ name }}</input>
-                <input id="date">{{ date }}</input>
+                <h1 id="name">{{ name }}</h1>
+                <h2 id="date">{{ date }}</h2>
             </div>
             <div class="row">
                 <div id="creator">Created by: {{ creator }}</div>
                 <br>
-                <input id="description"> {{ description }}</input>
+                <div id="description"> {{ description }}</div>
                 <br>
-                <input id="location">Location: {{ location }}</inp>
+                <div id="location">Location: {{ location }}</div>
                 <br>
             </div>
             <div class="row">
@@ -62,14 +21,60 @@
                 <br>
                 {{/each}}
             </div>
+            {{#unless isAttending}}
+                <div class="row">
+                    <div id="not-attending">You are not attending this event!</div>
+                </div>
+                <div class="row">
+                    <button id="rsvp-button">RSVP</button>
+                </div>
+            {{/unless}}
+            {{#if isAttending}}
+                <div class="row">
+                    <div id="attending">You are attending this event!</div>
+                </div>
+                <div class="row">
+                    <button id="cancel-rsvp-button">Cancel RSVP</button>
+                </div>
+            {{/if}}
+        {{/unless}}
+        {{#if isCreator}}
+            <div class="row">
+                <div id="creator">Created by: You!</div>
+                <label for="name">Event Name</label>
+                <input id="name" value={{name}}></input>
+
+                <label for="date">Date</label>
+                <input id="date" value={{date}}></input>
+            </div>
+            <div class="row">
+                <br>
+                <label for="description">Description</label>
+                <input id="description" value={{description}}></input>
+                <br>
+                <label for="location">Location</label>
+                <input id="location" value={{ location }}>Location:</inp>
+                <br>
+            </div>
+            <div class="row">
+                Attendees:
+                <br>
+                {{#each rsvps}}
+                    {{ this }}
+                    <br>
+                {{/each}}
+            </div>
 
             <div class="row">
                 <button id="edit-event-btn">Save</button>
                 <button id="delete-event-btn">Delete</button>
             </div>
-            {{/if}}
         {{/if}}
 </container>
 
+<script src="/javascript/edit-event.js"></script>
 <script src="/javascript/rsvp.js"></script>
-<script src="/javascript/edit-event.js"></script> 
+<script src="/javascript/cancel-rsvp.js"></script>
+
+{{! Language: handlebars }}
+{{! Path: views\single-event.handlebars }}

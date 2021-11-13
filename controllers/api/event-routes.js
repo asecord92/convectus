@@ -170,13 +170,13 @@ router.put('/:id', withAuth, (req, res) => {
 // DELETE /api/events/1
 router.delete('/:id', withAuth, (req, res) => {
     Event.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
+      where: {
+        id: req.params.id
+      }
+    })
     .then(dbEventData => {
       if (!dbEventData) {
-        res.status(404).json({ message: 'No user found with this id' });
+        res.status(404).json({ message: 'No event found with this id' });
         return;
       }
       res.json(dbEventData);

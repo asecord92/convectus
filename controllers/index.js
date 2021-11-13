@@ -8,9 +8,4 @@ router.use('/dashboard', dashboardRoutes )
 router.use('/', homeRoutes);
 router.use('/events', eventsRoutes)
 
-
-
-
-
 module.exports = router;
-
