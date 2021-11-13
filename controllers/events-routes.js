@@ -62,7 +62,7 @@ router.get('/attending', (req, res) => {
         }
     })
         .then(dbRsvpData => {
-            rsvpEventIDs = dbRsvpData.map(rsvp => {rsvp.dataValues.event_id});
+            rsvpEventIDs = dbRsvpData.map(rsvp => {return rsvp.dataValues.event_id});
             Event.findAll({
                 where: {
                     id: rsvpEventIDs
@@ -71,7 +71,7 @@ router.get('/attending', (req, res) => {
                 .then(dbEventData => {
                     var data = {
                         loggedIn: req.session.user_id !== undefined,
-                        title: 'Hosting events',
+                        title: 'Attending events',
                         events: [],
                     };
                     data.events = dbEventData.map(event => {
@@ -82,7 +82,7 @@ router.get('/attending', (req, res) => {
                         }
                         return currentEvent;
                     });
-                    res.render('allevents', data );
+                    res.render('attendingevents', data );
                 })
             })
         .catch(err => {
