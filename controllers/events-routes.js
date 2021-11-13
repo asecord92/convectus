@@ -255,4 +255,31 @@ router.get('/event/:id', (req, res) => {
     });
 });
 
+router.get('/hosted', (req, res) => {
+    const creator_id = req.session.user_id;
+
+    Event.findAll({
+        where: {
+            creator_id: creator_id
+        }
+    })
+        .then(dbEventData => {
+            const data = {
+                title:"New events",
+                events: [],
+            }
+            data.events = dbEventData.map(event => {
+                var currentEvent = {
+                    id: event.dataValues.id,
+                    name: event.dataValues.name,
+                    date: event.dataValues.date,
+                }
+                return currentEvent;
+            })
+            res.render('hostedevents', data);
+        })
+        .catch(err => {
+            res.status(500).json(err);
+        });
+})
 module.exports = router; 
