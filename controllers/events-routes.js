@@ -4,6 +4,7 @@ const sequelize = require('../config/connection');
 const { Rsvp, User, Event } = require('../models');
 const { fns, addDays, subDays, startOfDay, endOfDay } = require('date-fns');
 const { Op } = require('sequelize');
+const withAuth = require('../utils/auth')
 
 router.get('/all', (req, res) => {
     Event.findAll()
@@ -194,7 +195,7 @@ router.get('/new', (req, res) => {
         });
 });
 
-router.get('/event/:id', (req, res) => {
+router.get('/event/:id', withAuth, (req, res) => {
     const eventId = req.params.id;
 
     Rsvp.findAll({
