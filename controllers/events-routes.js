@@ -14,15 +14,21 @@ router.get('/all', (req, res) => {
                 title: 'All events',
                 events: [],
             };
+
             data.events = dbEventData.map(event => {
                 const newDate = new Date(event.dataValues.date)
                 const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
+                console.log('======================================')
+                console.log(event);
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
                     date: formatedDate,
+                    location: event.dataValues.location,
                 }
+
                 return currentEvent;
+
             });
             res.render('allevents', data);
         })
