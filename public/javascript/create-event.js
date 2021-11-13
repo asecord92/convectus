@@ -7,6 +7,7 @@ async function createNewEvent(e) {
     const name = document.querySelector('#event-name').value.trim();
     const description = document.querySelector('#event-description').value.trim();
     const date = document.querySelector('#event-date').value.trim();
+    console.log(date)
     const location = document.querySelector('#event-location').value.trim();
 
     const response = await fetch('/api/events', {

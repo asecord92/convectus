@@ -14,10 +14,12 @@ router.get('/all', (req, res) => {
                 events: [],
             };
             data.events = dbEventData.map(event => {
+                const newDate = new Date(event.dataValues.date)
+                const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
-                    date: event.dataValues.date,
+                    date: formatedDate,
                 }
                 return currentEvent;
             });
@@ -41,10 +43,12 @@ router.get('/hosting', (req, res) => {
                 events: [],
             };
             data.events = dbEventData.map(event => {
+                const newDate = new Date(event.dataValues.date)
+                const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
-                    date: event.dataValues.date,
+                    date: formatedDate,
                 }
                 return currentEvent;
             });
@@ -229,14 +233,15 @@ router.get('/event/:id', (req, res) => {
         User.findByPk(res.locals.event.creator_id)
         .then(dbCreatorData => {
             res.locals.creator = dbCreatorData.dataValues;
-
+            const newDate = new Date(res.locals.event.date);
+            const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
             const data = {
                 loggedIn: req.session.user_id !== undefined,
                 isCreator: res.locals.event.creator_id === req.session.user_id,
                 isAttending: res.locals.rsvps.includes(req.session.username),
                 creator: res.locals.creator.username,
                 name: res.locals.event.name,
-                date: res.locals.event.date,
+                date: formatedDate,
                 description: res.locals.event.description,
                 location: res.locals.event.location,
                 create_date: res.locals.event.created_at,

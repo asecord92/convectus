@@ -27,7 +27,7 @@ header {
   display: flex;
 }
 
-header a {
+header a, header a:hover {
   text-decoration: none;
   background: #31343c;
   color: #96c7ca;
@@ -109,7 +109,7 @@ div {
   display: flex;
   justify-content: flex-end;
   height: 350px;
-  width: 99%;
+  width: 99.3%;
   /* background-attachment: fixed; */
   background-position: 80%;
 
