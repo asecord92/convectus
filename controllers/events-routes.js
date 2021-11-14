@@ -18,8 +18,6 @@ router.get('/all', (req, res) => {
             data.events = dbEventData.map(event => {
                 const newDate = new Date(event.dataValues.date)
                 const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
-                console.log('======================================')
-                console.log(event);
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
