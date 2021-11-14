@@ -17,6 +17,7 @@ router.get('/:name', (req, res) => {
         res.status(404).json({ message: 'No event found with this name' });
         return;
       }
+      console.log('Res');
       res.json(dbEventData);
     })
     .catch(err => {

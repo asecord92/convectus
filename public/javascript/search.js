@@ -7,10 +7,13 @@ async function searchByName(e) {
 
     if (name) {
         const response = await fetch(`/api/eventname/${name}`, {
-            method: 'post'
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
-        console.log(response);
-        
+        const event = await response.json();
+        console.log(event.id);
     }
 
 
