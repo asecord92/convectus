@@ -13,7 +13,7 @@ async function searchByName(e) {
             }
         });
         const event = await response.json();
-        console.log(event.id);
+        document.location.replace(`/events/event/${event.id}`);
     }
 
 
