@@ -9,12 +9,7 @@ async function searchByName(e) {
         const response = await fetch(`/api/eventname/${name}`, {
             method: 'post'
         });
-        if(response.ok) {
-            console.log('success');
-            document.location.replace(`/dashboard/${name}`)
-        }else {
-            alert(response.statusText);
-        }
+        console.log(response);
         
     }
 
