@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { id } = require('date-fns/locale');
 const sequelize = require('../config/connection');
 const { Rsvp, User, Event } = require('../models');
-const { fns, addDays, subDays, startOfDay, endOfDay } = require('date-fns');
+const { fns, addDays, subDays, startOfDay, endOfDay, format, lightFormat } = require('date-fns');
 const { Op } = require('sequelize');
 const withAuth = require('../utils/auth')
 
@@ -17,7 +17,7 @@ router.get('/all', (req, res) => {
 
             data.events = dbEventData.map(event => {
                 const newDate = new Date(event.dataValues.date)
-                const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
+                const formatedDate = format(newDate, 'MM-dd-yyyy');
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
@@ -49,7 +49,7 @@ router.get('/hosting', (req, res) => {
             };
             data.events = dbEventData.map(event => {
                 const newDate = new Date(event.dataValues.date)
-                const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
+                const formatedDate = lightFormat(newDate, 'MM-dd-yyyy');
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
@@ -85,7 +85,7 @@ router.get('/attending', (req, res) => {
                     };
                     data.events = dbEventData.map(event => {
                         const newDate = new Date(event.dataValues.date)
-                        const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
+                        const formatedDate = format(newDate, 'MM-dd-yyyy');
                         var currentEvent = {
                             id: event.dataValues.id,
                             name: event.dataValues.name,
@@ -122,7 +122,7 @@ router.get('/today', (req, res) => {
             };
             data.events = dbEventData.map(event => {
                 const newDate = new Date(event.dataValues.date)
-                const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
+                const formatedDate = format(newDate, 'MM-dd-yyyy');
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
@@ -157,7 +157,7 @@ router.get('/thisweek', (req, res) => {
             }
             data.events = dbEventData.map(event => {
                 const newDate = new Date(event.dataValues.date)
-                const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
+                const formatedDate = format(newDate, 'MM-dd-yyyy');
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
@@ -192,7 +192,7 @@ router.get('/new', (req, res) => {
             }
             data.events = dbEventData.map(event => {
                 const newDate = new Date(event.dataValues.date)
-                const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
+                const formatedDate = format(newDate, 'MM-dd-yyyy');
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
@@ -247,7 +247,7 @@ router.get('/event/:id', withAuth, (req, res) => {
         .then(dbCreatorData => {
             res.locals.creator = dbCreatorData.dataValues;
             const newDate = new Date(res.locals.event.date);
-            const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
+            const formatedDate = format(newDate, 'MM-dd-yyyy');
             const data = {
                 loggedIn: req.session.user_id !== undefined,
                 isCreator: res.locals.event.creator_id === req.session.user_id,
@@ -284,7 +284,7 @@ router.get('/hosted', (req, res) => {
             }
             data.events = dbEventData.map(event => {
                 const newDate = new Date(event.dataValues.date)
-                const formatedDate = `${newDate.getMonth()}-${newDate.getDay()}-${newDate.getFullYear()}`
+                const formatedDate = format(newDate, 'MM-dd-yyyy');
                 var currentEvent = {
                     id: event.dataValues.id,
                     name: event.dataValues.name,
